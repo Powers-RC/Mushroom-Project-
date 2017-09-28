@@ -16,15 +16,22 @@
        $(document).ready(function(){
            $("select").imagepicker({limit: 1});
 
+        //Detects loaded images & Image formating
         var $container = $('.image_picker_selector');
           // initialize
             $container.imagesLoaded(function () {
               $container.masonry({
-                columnWidth: 30,
-                itemSelector: '.thumbnail'
+                itemSelector: '.image',
+                columnWidth: 500,
                 });
               });
            });
+
+         //alt to imagepicker click for option tag
+    //     $('option').click(function(){
+    //     $('.selected').removeClass('selected'); // removes the previous selected class
+    //     $(this).addClass('selected'); // adds the class to the clicked image
+    //  });
      </script>
 
   </head>
