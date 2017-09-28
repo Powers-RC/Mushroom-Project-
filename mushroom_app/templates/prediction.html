@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+<html>
+  {% extends "base.html" %}
+  {% block title %}Data Source{% endblock %}
+  {% block page %}Welcome to the prediction page!{% endblock %}
+  <br>
+  {% for key, value in data %}
+    <h1>{{key}}</h1>
+    <h1>{{value}}</h1>
+
+  {% endfor %}
+  </table>
+</html>
