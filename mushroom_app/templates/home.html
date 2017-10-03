@@ -14,7 +14,7 @@
     <nav id="cap_shape" class="shroom_attributes">
     	  <!--<a href="#">Cap Shape</a>-->
       <div class="shroom_attributes">
-        <form action="/home_post" mehtod="post" name="Mushroom Features">
+        <form action="/home_post" mehtod="post" id="Mushroom_Features">
 
           <select class="cap-picker">
             <option class="image" data-img-src="../static/cap_shape/bell_shaped_cap.jpeg" value="b">Bell Shape</option>
@@ -30,7 +30,7 @@
                 <!--figure out this action parameter-->
                 <!--<p>Feature String<br>-->
       <div class="Submit and Agreement">
-        <br><button type='submit' name='Mushroom Features' value='submit'>Submit</button><br>
+        <br><button type='submit' name='submit_features' value="Submit" form="Mushroom_Features">Submit</button><br>
         <p>I agree that I will not eat any mushrooms based on the results presented by this site classifier.<br>
         {{form.agreement()}}<br>
         </p>

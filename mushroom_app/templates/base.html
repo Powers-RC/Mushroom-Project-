@@ -14,15 +14,20 @@
 
     <script>
        $(document).ready(function(){
-           $("select").imagepicker({limit: 1});
+           $("select").imagepicker({limit: 1,
+               show_label:true,
+               hide_selected:false, selected: function(option){
+                   var values = this.val();
+                   alert(values);
+               }
 
+           });
         //Detects loaded images & Image formating
         var $container = $('.image_picker_selector');
           // initialize
             $container.imagesLoaded(function () {
               $container.masonry({
                 itemSelector: '.image',
-                columnWidth: 500,
                 });
               });
            });
