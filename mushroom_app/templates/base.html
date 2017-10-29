@@ -1,45 +1,6 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-
-    <title>{% block title %}{% endblock %}</title>
-    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css_files/home.css')}}">
-    <link type="text/css" rel"stylesheet" href="{{url_for('static', filename='css_files/image-picker.css')}}">
-    <script type="text/javascript" src="{{url_for('static', filename='js_files/jquery-3.2.1.min.js')}}"></script>
-    <!-- <script type="text/javascript" src="{{url_for('static', filename='js_files/image-picker.js')}}"></script> -->
-    <script type="text/javascript" src="{{url_for('static', filename='js_files/image-picker.min.js')}}"></script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-
-    <script>
-       $(document).ready(function(){
-           $("select").imagepicker({limit: 1,
-               show_label:true,
-               hide_selected:false, selected: function(option){
-                   var values = this.val();
-                   alert(values);
-               }
-
-           });
-        //Detects loaded images & Image formating
-        var $container = $('.image_picker_selector');
-          // initialize
-            $container.imagesLoaded(function () {
-              $container.masonry({
-                itemSelector: '.image',
-                });
-              });
-           });
-
-         //alt to imagepicker click for option tag
-    //     $('option').click(function(){
-    //     $('.selected').removeClass('selected'); // removes the previous selected class
-    //     $(this).addClass('selected'); // adds the class to the clicked image
-    //  });
-     </script>
-
-  </head>
   <body>
 
       <div>

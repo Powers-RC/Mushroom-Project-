@@ -6,7 +6,8 @@
   {% block page %}Welcome to the prediction page!{% endblock %}
   {% block content %}
   <br>
-  <p>Is this content block {{ data }} working?</p>
+  <p>Is this content block working? Here is the data if any... {{ data }}</p>
+  
   {% for key, value in data %}
   {{ key }}
   {{ value }}

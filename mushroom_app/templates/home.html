@@ -1,41 +1,60 @@
 <!DOCTYPE html>
 
 <html>
+    <head>
+      <!-- {% block title %}{% endblock %} -->
+      <title>Home</title>
+      <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css_files/home.css')}}">
+      <link type="text/css" rel"stylesheet" href="{{url_for('static', filename='css_files/image-picker.css')}}">
+      <script type="text/javascript" src="{{url_for('static', filename='js_files/jquery-3.2.1.min.js')}}"></script>
+      <!-- <script type="text/javascript" src="{{url_for('static', filename='js_files/image-picker.js')}}"></script> -->
+      <script type="text/javascript" src="{{url_for('static', filename='js_files/image-picker.min.js')}}"></script>
+      <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+      <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+      <script type="text/javascript" src="{{url_for('static', filename='js_files/img_functions.js')}}"></script>
+      <script>
+      $(document).ready(function(){
+         $("select").imagepicker({show_label : true});
+         $("select").imagepicker({show_label : true, selected: removeOptions(document.getElementByClass('picker'))});
+         $("select").imagepicker({show_label : true, selected: placeImages(feature_lst, min)});
+         $("select").imagepicker({show_label : true, selected: getValue()});
+        //  removeOptions(document.getElementByClass('picker'));
+        //  placeImages(feature_lst, min);
+        //  getValue();
+         // maybe this to rest options before getValue $("select").imagepicker();
+      });
+      </script>
+    </head>
+
+
 <!-- Creates Home Page w/ Submit, Agreement, & Attribute Selection -->
   {% extends "base.html" %}
-  {% block title %}Home{% endblock %}
   {% block home %}Yummy Mushrooms{% endblock %}
   {% block content %}
     <p> We recommend you look at the about page before using out cool site.</p>
     <p>
       This website has been designed to help the user determine if a wild mushroom might be edible. While we strongly recommend not to eat wild mushrooms unless consulting a professioal mycologist.
     </p>
-    <!--Cap Shape image buttons, maybe remove list-->
-    <nav id="cap_shape" class="shroom_attributes">
-    	  <!--<a href="#">Cap Shape</a>-->
-      <div class="shroom_attributes">
-        <form action="/home_post" mehtod="post" id="Mushroom_Features">
+      <form action="/home_post" mehtod="post" class="features">
+        <div class="mush-attr">
 
-          <select class="cap-picker">
-            <option class="image" data-img-src="../static/cap_shape/bell_shaped_cap.jpeg" value="b">Bell Shape</option>
-            <option class="image" data-img-src='../static/cap_shape/conical_cap.jpeg' value="c">Conical Shape</option>
-            <option class="image" data-img-src="../static/cap_shape/convex_cap.jpeg" value='x'>Convex Shape</option>
-            <option class="image" data-img-src="../static/cap_shape/flat_cap.jpeg" value="f">Bell Shape</option>
-            <option class="image" data-img-src='../static/cap_shape/knobbed_cap.jpeg' value="k">Conical Shape</option>
-            <option class="image" data-img-src="../static/cap_shape/sunken_cap.jpeg" value='s'>Convex Shape</option>
+          <select class="picker">
+            <option class="image" data-img-src="../static/feature_imgs/enlarging_stalk.jpg" value="e">Enlarging Stalk</option>
+            <option  class="image" data-img-src='../static/feature_imgs/tapering_stalk.jpg' value="t">Tapering Stalk</option>
           </select>
 
-      </div>
-                <!--Submit & Agreement-->
-                <!--figure out this action parameter-->
-                <!--<p>Feature String<br>-->
-      <div class="Submit and Agreement">
-        <br><button type='submit' name='submit_features' value="Submit" form="Mushroom_Features">Submit</button><br>
-        <p>I agree that I will not eat any mushrooms based on the results presented by this site classifier.<br>
+        </div>
+      <!--Submit & Agreement-->
+      <!--figure out this action parameter-->
+      <!--<p>Feature String<br>-->
+        <div class="Submit and Agreement">
+          <br>
+          <button id='submit-btn' type='submit'>Submit</button>
+          <br>
+          <p>I agree that I will not eat any mushrooms based on the results presented by this site classifier.<br>
         {{form.agreement()}}<br>
-        </p>
-      </div>
+          </p>
+        </div>
     </form>
-    </nav>
-    {% endblock %}
+  {% endblock %}
 </html>

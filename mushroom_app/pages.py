@@ -5,17 +5,18 @@ from forms import feature_string
 @app.route('/')
 @app.route('/home')
 def home():
-    featrue_lst = []
     form = feature_string()
     if request.method == "POST":
-        redirect(url_for('/home_post'))
+        return render_template('home.html', methods=['GET, POST'], form=form)
+        # redirect(url_for('/home_post'))
+        #check validators
     else:
         return render_template('home.html', methods=['GET, POST'], form=form)
 
-@app.route('/home_post')
-def prediction_page():
-    data = request.form
-    return render_template('prediction.html', methods=['GET, POST'], data=data)
+# @app.route('/home_post')
+# def prediction_page():
+#     data = request.form
+#     return render_template('prediction.html', methods=['GET, POST'], data=data)
 
 @app.route('/about')
 def about():
