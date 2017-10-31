@@ -13,16 +13,17 @@
       <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
       <script type="text/javascript" src="{{url_for('static', filename='js_files/img_functions.js')}}"></script>
       <script>
-      $(document).ready(function(){
-         $("select").imagepicker({show_label : true});
-         $("select").imagepicker({show_label : true, selected: removeOptions(document.getElementByClass('picker'))});
-         $("select").imagepicker({show_label : true, selected: placeImages(feature_lst, min)});
-         $("select").imagepicker({show_label : true, selected: getValue()});
-        //  removeOptions(document.getElementByClass('picker'));
-        //  placeImages(feature_lst, min);
-        //  getValue();
-         // maybe this to rest options before getValue $("select").imagepicker();
-      });
+      getValue();
+  //     $(document).ready(function(){
+  //         var container = []
+  //         $('select').imagepicker({
+  //             selected: function(option){
+  //             var value = this.val();
+  //             container.push(value);
+  //             alert(container);
+  //         }
+  //     });
+  // });
       </script>
     </head>
 
@@ -39,7 +40,7 @@
         <div class="mush-attr">
 
           <select class="picker">
-            <option class="image" data-img-src="../static/feature_imgs/enlarging_stalk.jpg" value="e">Enlarging Stalk</option>
+            <option class="image" data-img-src="../static/feature_imgs/enlarging_stalk.jpeg" value="e">Enlarging Stalk</option>
             <option  class="image" data-img-src='../static/feature_imgs/tapering_stalk.jpg' value="t">Tapering Stalk</option>
           </select>
 

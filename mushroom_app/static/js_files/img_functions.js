@@ -1,15 +1,17 @@
 function getValue(){
-    var container = []
-    $("select").imagepicker({
-        selected: function(option){
-            var value = this.val();
-            container.push(value)
-            alert(container)
-        }
+    $(document).ready(function(){
+        var container = []
+        $("select").imagepicker({
+            selected: function(option){
+                var value = this.val();
+                container.push(value);
+                alert(container);
+            }
+        });
     });
-};
+}
 
-function placeImages(json_lst){
+function placeImages(json_lst, min){
     var oder = {
         images = new Array("odor_almond.jpeg", "odor_anise.jpeg", "odor_creosote.jpg", "odor_fishy.jpg", "odor_foul.jpg", "odor_musty.jpeg", "odor_none.jpeg", "odor_pungent.jpg", "odor_spicy .jpg"),
         values = new Array("a", "l", "c", "y", "f", "m", "n", "p", "s"),
@@ -20,12 +22,6 @@ function placeImages(json_lst){
         images = new Array("broad_gillsize.jpeg", "narrow_gillsize.jpeg"),
         values = new Array("b", "n"),
         text = new Array("Broad gill-size", "Narrow gill-size")
-    };
-
-    var stalk_shape = {
-        images = new Array("enlarging_stalk.jpeg", "tapering_stalk.jpg"),
-        values = new Array("e", "t"),
-        text = new Array("Enlarging stalk-shape", "Tappering stalk-shape")
     };
 
     var spore_print_color = {
@@ -40,9 +36,6 @@ function placeImages(json_lst){
         text = new Array("Grasses", "Leaves", "Meadows", "Paths", "Urban", "Waste", "Woods"),
     };
 
-
-
-    // removeOptions(document.getElementByClass("picker"));
 
     var max = json_lst.length - 1, select = document.getElementByClass('picker')
 
@@ -60,7 +53,7 @@ function placeImages(json_lst){
     else{
         alert("You have made a selection for each parameter. Please hit the submit button. ")
     };
-};
+}
 
 function removeOptions(select){
     var i;
@@ -72,4 +65,4 @@ function removeOptions(select){
 }
 
 
-var feature_lst = new Array("stalk_shape", "oder", "gill_size", "spore_print_color", "habitat");
+var feature_lst = new Array("oder", "gill_size", "spore_print_color", "habitat");
