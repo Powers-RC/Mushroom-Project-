@@ -37,7 +37,7 @@ function placeImages(json_lst, min){
     };
 
 
-    var max = json_lst.length - 1, select = document.getElementByClass('picker')
+    var max = json_lst.length - 1, select = document.getElemenstByClassName('picker')
 
     if(min <= max){
 
@@ -59,11 +59,10 @@ function removeOptions(select){
     $(document).ready(function(){
     $("select").imagepicker({
         selected:function(option){
-            alert(select.options.length)
         var i;
-        for (i = select.options.length - 1; i >= 0; i-- )
-                {
-                    select.remove(i);
+        for (i = document.getElementsByClassName('image').length - 1; i >= 0; i-- )
+                { var x = document.getElementsByClassName('picker')
+                x.remove(x.i);
                 }
             }
 
