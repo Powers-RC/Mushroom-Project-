@@ -1,3 +1,4 @@
+// add if statement for the length of container
 function getValue(){
     $(document).ready(function(){
         var container = []
@@ -57,15 +58,11 @@ function placeImages(json_lst, min){
 
 function removeOptions(select){
     $(document).ready(function(){
-    $("select").imagepicker({
-        selected:function(option){
-        var i;
-        for (i = document.getElementsByClassName('image').length - 1; i >= 0; i-- )
-                { var x = document.getElementsByClassName('picker')
-                x.remove(x.i);
-                }
+        $("select").imagepicker({
+            selected:function(option){
+                document.getElementsByClassName('picker')[0].options.length = 0
+                $('select').imagepicker(); // test, can remove once complete
             }
-
         });
     });
 }
