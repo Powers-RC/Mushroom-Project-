@@ -1,3 +1,4 @@
 #secret file
 mushroom_app/secrets.py
 mushroom_app/.DS_Store
+mushroom_app/templates/test_scripts.html
