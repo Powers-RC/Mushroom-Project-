@@ -37,24 +37,30 @@ function placeImages(json_lst, min){
         text : ["Grasses", "Leaves", "Meadows", "Paths", "Urban", "Waste", "Woods"]
     };
 
+    var max = json_lst.length - 1, select = document.getElementsByClassName('picker')[0]
 
-    var max = json_lst.length - 1, select = document.getElemenstByClassName('picker')
-
-    if(min <= max){
-
-        for (i = 0; i <= eval(json_lst)[min].images.length - 1; i++){
-            var opt = document.createElement("option");
-            opt.setAttribute('value') = json_lst[min].values[i]
-            opt.setAttribute('data-img-src') = '~/DS_practice/mushroom_project/mushroom_app/static/feature_imgs' + json_lst[min].images[i]
-            opt.setAttribute('innerHTML') = json_lst[min].text[i]
-        };
-        min = min + 1
-        return min
+    $(document).ready(function(){
+        $("select").imagepicker({
+            selected:function(){
+            if(min <= max){
+                for (i = 0; i <= eval(eval(json_lst)[min]).images.length - 1; i++){
+                    var opt = document.createElement("option");
+                    opt.setAttribute('value', eval(json_lst[min]).values[i])
+                    opt.setAttribute('data-img-src', '~/DS_practice/mushroom_project/mushroom_app/static/feature_imgs' + eval(json_lst[min]).images[i])
+                    opt.setAttribute('innerHTML', eval(json_lst[min]).text[i])
+                    select.appendChild(opt)
+                                }
+                            // $('select').imagepicker();
+                            min = min + 1
+                            return min
+                            }
+                else {
+                    alert("You have made a selection for each parameter. Please hit the submit button. ");
+                    }
+                }
+            });
+        });
     }
-    else {
-        alert("You have made a selection for each parameter. Please hit the submit button. ");
-    }
-}
 
 function removeOptions(select){
     $(document).ready(function(){

@@ -13,8 +13,10 @@
       <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
       <script type="text/javascript" src="{{url_for('static', filename='js_files/img_functions.js')}}"></script>
       <script>
+      var min = 0
       getValue();
       removeOptions('select');
+      placeImages(feature_lst, min);
       </script>
     </head>
 
