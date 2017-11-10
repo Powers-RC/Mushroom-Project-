@@ -37,20 +37,23 @@ function placeImages(json_lst, min){
         text : ["Grasses", "Leaves", "Meadows", "Paths", "Urban", "Waste", "Woods"]
     };
 
-    var max = json_lst.length - 1, select = document.getElementsByClassName('picker')[0]
 
     $(document).ready(function(){
         $("select").imagepicker({
             selected:function(){
+
+            var max = json_lst.length - 1, select = document.getElementsByClassName('picker')[0]
+
             if(min <= max){
                 for (i = 0; i <= eval(eval(json_lst)[min]).images.length - 1; i++){
                     var opt = document.createElement("option");
-                    opt.setAttribute('value', eval(json_lst[min]).values[i])
-                    opt.setAttribute('data-img-src', '~/DS_practice/mushroom_project/mushroom_app/static/feature_imgs' + eval(json_lst[min]).images[i])
-                    opt.setAttribute('innerHTML', eval(json_lst[min]).text[i])
-                    select.appendChild(opt)
+                    opt.setAttribute('value', eval(json_lst[min]).values[i]);
+                    opt.setAttribute('data-img-src', '../static/feature_imgs/' + eval(json_lst[min]).images[i]);
+                    opt.setAttribute('innerHTML', eval(json_lst[min]).text[i]);
+                    select.appendChild(opt);
+                    // $('select').imagepicker();
                                 }
-                            // $('select').imagepicker();
+                            $('select').imagepicker();
                             min = min + 1
                             return min
                             }
@@ -67,7 +70,6 @@ function removeOptions(select){
         $("select").imagepicker({
             selected:function(option){
                 document.getElementsByClassName('picker')[0].options.length = 0
-                $('select').imagepicker(); // test, can remove once complete
             }
         });
     });
