@@ -20,32 +20,34 @@
 
 <!-- Creates Home Page w/ Submit, Agreement, & Attribute Selection -->
   {% extends "base.html" %}
-  {% block home %}Edibility{% endblock %}
   {% block content %}
-    <p> We recommend you look at the about page before using our cool site.</p>
-    <p>
+  <div class='homePageText'>
+    <p class='cool_site'> We recommend you look at the about page before using our cool site.</p>
+    <p class="warning">
       This website has been designed to help the user determine if a wild mushroom might be edible. While we strongly recommend not to eat wild mushrooms unless consulting a professioal mycologist.
     </p>
-      <form action="/home_post" mehtod="post" class="features">
-        <div class="mush-attr">
+  </div>
 
-          <select class="picker">
-            <option class="image" data-img-src="../static/feature_imgs/enlarging_stalk.jpeg" value="e">Enlarging Stalk</option>
-            <option  class="image" data-img-src='../static/feature_imgs/tapering_stalk.jpg' value="t">Tapering Stalk</option>
-          </select>
+  <form action="{{url_for('submission')}}" method="POST" class="features">
+    <div class="mush-attr">
 
-        </div>
-      <!--Submit & Agreement-->
-      <!--figure out this action parameter-->
-      <!--<p>Feature String<br>-->
-        <div class="Submit and Agreement">
-          <br>
-          <button id='submit-btn' type='submit'>Submit</button>
-          <br>
-          <p>I agree that I will not eat any mushrooms based on the results presented by this site classifier.<br>
-        {{form.agreement()}}<br>
-          </p>
-        </div>
-    </form>
+      <select class="picker">
+        <option class="image" data-img-src="../static/feature_imgs/enlarging_stalk.jpeg" value="e">Enlarging Stalk</option>
+        <option  class="image" data-img-src='../static/feature_imgs/tapering_stalk.jpg' value="t">Tapering Stalk</option>
+      </select>
+
+    </div>
+  <!--Submit & Agreement-->
+  <!--<p>Feature String<br>-->
+    <div class="Submit and Agreement">
+      <br>
+      <input name="input_attr" type="hidden" id=attr>
+      <input name="input_attr" type="submit"/>
+      <br>
+      <p>I agree that I will not eat any mushrooms based on the results presented by this site classifier.<br>
+    {{form.agreement()}}<br>
+      </p>
+    </div>
+  </form>
   {% endblock %}
 </html>

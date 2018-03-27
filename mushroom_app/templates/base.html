@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 
 <html>
-  <body>
+<head>
+<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css_files/base.css')}}">
+<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css_files/load_img.css')}}">
+</head>
+  <body class='base_body'>
       <div class='nav_block'>
-        <h1>{% block home %}{% endblock %}</h1>
+        <h1>Mushroom Madness</h1>
+        <!-- {% block home %}{% endblock %} -->
         <nav>
           <a href='/home'>Home</a>
           <a href='/about'>About</a>

@@ -2,16 +2,17 @@
 
 <html>
   {% extends "base.html" %}
-  {% block title %}Data Source{% endblock %}
+  {% block title %}Prediction{% endblock %}
   {% block page %}Welcome to the prediction page!{% endblock %}
   {% block content %}
   <br>
-  <p>Is this content block working? Here is the data if any... {{ data }}</p>
-  
-  {% for key, value in data %}
-  {{ key }}
-  {{ value }}
-  {% endfor %}
+  <dir class=result_img>
+    {% if result|int() == 0 %}
+        <img id=edible_mush src="../static/good_mush_result.jpg" alt='Mushrooms prepped for cooking'>
+    {%  else %}
+        <img id=poisonous_mush src="../static/bad_mush_result.jpg" alt="Mushroom cloud">
 
+    {% endif %}
+  </dir>
   {% endblock %}
 </html>

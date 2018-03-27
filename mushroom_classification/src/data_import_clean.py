@@ -19,6 +19,7 @@ def clean_df(df):
 
 
 if __name__ == '__main__':
+    print(pd.__class__)
     pd.set_option('display.max_columns', 23)
     mushroom_df =pd.DataFrame({"class":[], "cap_shape":[], "cap_surface":[],"cap_color":[],"bruises":[], "oder":[], "gill_attachment":[], "gill_spacing":[], "gill_size":[], "gill_color":[], "stalk_shape":[], "stalk_root":[], "stalk_surface_above_ring":[], "stalk_surface_below_ring":[], "stalk_color_above_ring":[], "stalk_color_below_ring":[], "veil_type":[], "veil_color":[], "ring_number":[], "ring_type":[], "spore_print_color":[], "population":[], "habitat":[]})
 
@@ -26,4 +27,4 @@ if __name__ == '__main__':
     mushroom_df = mushroom_df[["class", "cap_shape", "cap_surface","cap_color","bruises", "oder", "gill_attachment", "gill_spacing", "gill_size", "gill_color", "stalk_shape", "stalk_root", "stalk_surface_above_ring", "stalk_surface_below_ring", "stalk_color_above_ring", "stalk_color_below_ring", "veil_type", "veil_color", "ring_number", "ring_type", "spore_print_color", "population", "habitat"]]
 
     import_data("../data/mushrooms/Dataset.data", mushroom_df)
-    clean_df(mushroom_df)
+    clean_mush_df = clean_df(mushroom_df)

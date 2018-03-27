@@ -1,0 +1,27 @@
+body {
+  background-color: grey;
+  background-position: center;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+/*option{border:solid 1px red; margin:10px;}*/
+
+
+.nav_block{
+    padding: 40px;
+    text-align: center;
+    background-image: url('../background_img.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*position: fixed;*/
+}
+
+a{
+    color:white;
+    text-decoration: none;
+}
