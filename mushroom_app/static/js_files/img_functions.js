@@ -124,17 +124,28 @@ function onClick(json_lst, min, container){
                 if(min <= max){
                     for (i = 0; i <= eval(eval(json_lst)[min]).images.length - 1; i++){
                         var opt = document.createElement("option");
+                        opt.setAttribute('class', 'image')
                         opt.setAttribute('value', eval(json_lst[min]).values[i]);
                         opt.setAttribute('data-img-src', '../static/feature_imgs/' + eval(json_lst[min]).images[i]);
                         opt.setAttribute('data-img-label', eval(json_lst[min]).text[i]);
                         select.appendChild(opt);
                                     }
+
                                 min = min + 1
                                 $('select').imagepicker({ show_label: true,
                                     clicked:function(){onClick(json_lst, min, window.container)}
                                 });
+                                var $container = $('.image_picker_selector');
+                                //initialize
+                                $container.imagesLoaded(function(){
+                                    $container.masonry({
+                                        gutter: 0,
+
+                                    });
+                                });
                                 return min
                                 }
+
                     else {
                         $('select').imagepicker();
 
@@ -161,6 +172,14 @@ function onClick(json_lst, min, container){
                         }
 
                 }
+            });
+            var $container = $('.image_picker_selector');
+            //initialize
+            $container.imagesLoaded(function(){
+                $container.masonry({
+                    gutter:0,
+                    // itemSelector:'.image'
+                });
             });
         });
     };
