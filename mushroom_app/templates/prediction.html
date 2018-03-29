@@ -6,13 +6,25 @@
   {% block page %}Welcome to the prediction page!{% endblock %}
   {% block content %}
   <br>
-  <dir class=result_img>
+  <div class="flash_error">
+      {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+  </div>
+  <br>
+  <div class=result_img>
     {% if result|int() == 0 %}
         <img id=edible_mush src="../static/good_mush_result.jpg" alt='Mushrooms prepped for cooking'>
     {%  else %}
         <img id=poisonous_mush src="../static/bad_mush_result.jpg" alt="Mushroom cloud">
 
     {% endif %}
-  </dir>
+  </div>
   {% endblock %}
 </html>

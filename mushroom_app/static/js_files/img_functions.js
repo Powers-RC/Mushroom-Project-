@@ -111,7 +111,7 @@ function onClick(json_lst, min, container){
 
         // variable for array goes here
 
-        $("select").imagepicker({ show_label: true,
+        $("select").imagepicker({ show_label: false,
             clicked:function(){
                 //Sends image value
                 var value = this.val();
@@ -132,7 +132,7 @@ function onClick(json_lst, min, container){
                                     }
 
                                 min = min + 1
-                                $('select').imagepicker({ show_label: true,
+                                $('select').imagepicker({ show_label: false,
                                     clicked:function(){onClick(json_lst, min, window.container)}
                                 });
                                 var $container = $('.image_picker_selector');

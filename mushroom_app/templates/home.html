@@ -29,6 +29,7 @@
   </div>
 
   <form action="{{url_for('submission')}}" method="POST" class="features">
+    {{ form.csrf_token }}  
 
     <div class="mush-attr">
           <select class="picker">
@@ -39,14 +40,29 @@
 
   <!--Submit & Agreement-->
   <!--<p>Feature String<br>-->
+  <br>
+  <div class="flash_error">
+      {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        {% if error %}
+          <p class=error><strong>Error:</strong> {{ error }}
+        {% endif %}
+    </div>
     <div class="Submit and Agreement">
       <br>
       <input name="input_attr" type="hidden" id=attr>
-      <input name="input_attr" type="submit"/>
+
+      <p>Please agree not to eat any mushrooms based on this result.    {{form.agreement()}}</p>
+
       <br>
-      <p>I agree that I will not eat any mushrooms based on the results presented by this site classifier.<br>
-    {{form.agreement()}}<br>
-      </p>
+      <input name="input_attr" type="submit"/>
     </div>
   </form>
   {% endblock %}

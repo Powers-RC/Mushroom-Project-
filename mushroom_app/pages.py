@@ -40,33 +40,46 @@ def prediction():
 @app.route('/submission', methods = ['GET','POST'])
 # @app.route('/submission/<string:attr_list>', methods = ['GET', 'POST'])
 def submission(attr_list=None):
-    if request.method == 'POST':
+    form = feature_string(request.form)
+    error = None
+
+    if request.method == 'POST' and form.validate_on_submit():
         attr_list = request.form['input_attr'].strip()
         attr_list = [i for i in list(attr_list) if i != ',']
 
-        # return ('Testing... {}').format(attr_list)
+        len_check = len(attr_list)
 
-        model = pickle.load(open('../mushroom_classification/src/mushroom_model.pkl','rb'))
-        encoding = pickle.load(open('../mushroom_classification/src/mushroom_le.pkl','rb'))
+        if len_check != 5:
+            error = "Not all parameters were selected before submission"
+            return render_template('home.html', error=error, form=form, methods=["GET", "POST"])
 
-        data_dic = {"stalk_shape": [], "odor": [], "gill_size":[], "spore_print_color":[], "habitat":[]}
-        # ["stalk_shape","oder","gill_size","spore_print_color","habitat"]
-        data_dic["stalk_shape"] = attr_list[0]
-        data_dic["odor"] = attr_list[1]
-        data_dic["gill_size"] = attr_list[2]
-        data_dic["spore_print_color"] = attr_list[3]
-        data_dic["habitat"] = attr_list[4]
+        else:
+            flash("You successfully submitted your mushroom characteristics")
+
+            model = pickle.load(open('../mushroom_classification/src/mushroom_model.pkl','rb'))
+            encoding = pickle.load(open('../mushroom_classification/src/mushroom_le.pkl','rb'))
+
+            data_dic = {"stalk_shape": [], "odor": [], "gill_size":[], "spore_print_color":[], "habitat":[]}
+            # ["stalk_shape","oder","gill_size","spore_print_color","habitat"]
+            data_dic["stalk_shape"] = attr_list[0]
+            data_dic["odor"] = attr_list[1]
+            data_dic["gill_size"] = attr_list[2]
+            data_dic["spore_print_color"] = attr_list[3]
+            data_dic["habitat"] = attr_list[4]
 
 
-        df = pd.DataFrame(data_dic, index=[0])
-        # return ("Testing......{}").format(df)
-        transformed_df = df.apply(lambda x: encoding[x.name].transform(x))
-        # return ("Testing......{}").format(transformed_df.as_matrix()[0])
-        results = int(model.predict(transformed_df.as_matrix())[0])
-        # return ("Testing......{}").format(results)
+            df = pd.DataFrame(data_dic, index=[0])
+            # return ("Testing......{}").format(df)
+            transformed_df = df.apply(lambda x: encoding[x.name].transform(x))
+            len_check = len(transformed_df.as_matrix()[0])
+            # return ("Testing......{}").format(transformed_df.as_matrix()[0])
+            results = int(model.predict(transformed_df.as_matrix())[0])
+            # return ("Testing......{}").format(len_check)
+            return redirect(url_for('prediction', result=results))
+    else:
+        error = "Please agree to our terms and select your parameters again!"
+        return render_template('home.html', error=error, form=form, methods=["GET", "POST"])
 
-
-        return redirect(url_for('prediction', result=results))
         # ("Testing......{}").format(model.predict(transformed_df.as_matrix()))
 
         # 1:posionous 0:edible
